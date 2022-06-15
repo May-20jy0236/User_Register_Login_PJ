@@ -14,6 +14,7 @@
 		55F32FE32859B71E0048B141 /* User_Register_Login_PJ.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55F32FE12859B71E0048B141 /* User_Register_Login_PJ.xcdatamodeld */; };
 		55F32FE52859B7200048B141 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55F32FE42859B7200048B141 /* Assets.xcassets */; };
 		55F32FE82859B7200048B141 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55F32FE62859B7200048B141 /* LaunchScreen.storyboard */; };
+		55F32FF02859BA0E0048B141 /* Main_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F32FEF2859BA0E0048B141 /* Main_ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		55F32FE42859B7200048B141 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55F32FE72859B7200048B141 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55F32FE92859B7200048B141 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55F32FEF2859BA0E0048B141 /* Main_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main_ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				55F32FE62859B7200048B141 /* LaunchScreen.storyboard */,
 				55F32FE92859B7200048B141 /* Info.plist */,
 				55F32FE12859B71E0048B141 /* User_Register_Login_PJ.xcdatamodeld */,
+				55F32FEF2859BA0E0048B141 /* Main_ViewController.swift */,
 			);
 			path = User_Register_Login_PJ;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				55F32FD92859B71E0048B141 /* AppDelegate.swift in Sources */,
 				55F32FDB2859B71E0048B141 /* SceneDelegate.swift in Sources */,
 				55F32FE32859B71E0048B141 /* User_Register_Login_PJ.xcdatamodeld in Sources */,
+				55F32FF02859BA0E0048B141 /* Main_ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
