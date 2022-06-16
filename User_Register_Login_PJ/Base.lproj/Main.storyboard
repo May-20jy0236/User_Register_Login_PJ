@@ -98,16 +98,50 @@
                         <outlet property="passwordTextField" destination="KDK-Ix-g6j" id="3Gy-J6-dbu"/>
                         <outlet property="reenterpassTextField" destination="8wH-hN-6y6" id="LXY-aY-idd"/>
                         <outlet property="registerBtn" destination="min-eM-ckD" id="C4X-pU-7Es"/>
+                        <segue destination="jEg-My-Isu" kind="presentation" identifier="register" id="GZc-eH-hZK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="122" y="89"/>
         </scene>
+        <!--Register Complete View Controller-->
+        <scene sceneID="Lvq-az-Z02">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="jEg-My-Isu" customClass="Register_Complete_ViewController" customModule="User_Register_Login_PJ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qym-2r-r97">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REGISTER COMPLETE" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3am-pc-tJT">
+                                <rect key="frame" x="58" y="244" width="298.5" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="fnh-do-eZF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qam-U8-jED"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3am-pc-tJT" firstAttribute="leading" secondItem="Qam-U8-jED" secondAttribute="leading" constant="58" id="BTg-Fs-bae"/>
+                            <constraint firstItem="3am-pc-tJT" firstAttribute="top" secondItem="Qam-U8-jED" secondAttribute="top" constant="200" id="f4r-PL-aZv"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="252-h4-OQp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="920" y="96"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

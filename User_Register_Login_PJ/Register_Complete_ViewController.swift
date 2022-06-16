@@ -1,19 +1,19 @@
 //
-//  ViewController.swift
+//  Register_Complete_ViewController.swift
 //  User_Register_Login_PJ
 //
-//  Created by HL株式会社 on 15/6/2022.
+//  Created by HL株式会社 on 16/6/2022.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class Register_Complete_ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         // Do any additional setup after loading the view.
     }
-
+    
 
 }
-

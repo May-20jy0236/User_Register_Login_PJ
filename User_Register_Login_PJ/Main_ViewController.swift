@@ -16,10 +16,8 @@ class Main_ViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var reenterpassTextField: UITextField!
+    var data1 = String()
     var data2 = String()
-    var alert = UIAlertController()
-    var okAction = UIAlertAction()
-    
     var customer: [NSManagedObject] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,57 +36,54 @@ class Main_ViewController: UIViewController {
     }
     
     @IBAction func registerBtn(_ sender: UIButton) {
-        
-        guard let data1 = emailTextField?.text else{ return}
-        
-        if ( passwordTextField?.text != nil && reenterpassTextField?.text != nil){
-            if (passwordTextField?.text == reenterpassTextField?.text ){
-                guard let pass = reenterpassTextField?.text else{return}
-                data2 = pass
-            }else{
-                alert = UIAlertController(title: "Error",
-                                                message: "Incorrect Password",
-                                                preferredStyle: .alert)
-                okAction = UIAlertAction(title: "OK",
-                                             style: .default)
-            }
-        }else{
-            alert = UIAlertController(title: "Error",
-                                            message: "Please Enter User Name and Password",
-                                            preferredStyle: .alert)
-            okAction = UIAlertAction(title: "OK",
+
+        if (emailTextField.text == "" || passwordTextField.text == "" || reenterpassTextField.text == ""){
+            let dialogMsg = UIAlertController(title: "Error", message: "Please Enter User Name and Password", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK",
                                          style: .default)
+            dialogMsg.addAction(okAction)
+            present(dialogMsg, animated: true, completion: nil)
+            
+        }else if ( passwordTextField.text != reenterpassTextField.text){
+            let dialogMessage = UIAlertController(title: "Error", message: "Passwords are not the same", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK",
+                                         style: .default)
+            dialogMessage.addAction(okAction)
+            present(dialogMessage, animated: true, completion: nil)
+        }else{
+            guard let mail = emailTextField?.text else{ return}
+            data1 = mail
+            guard let pass = emailTextField?.text else{ return}
+            data2 = pass
+            performSegue(withIdentifier: "register", sender: nil)
         }
-        
-        
-        alert.addAction(okAction)
+
         self.save(email: data1, password: data2)
-        present(alert, animated: true)
 
     }
     func save(email: String, password: String) {
-      
+
       guard let appDelegate =
         UIApplication.shared.delegate as? AppDelegate else {
         return
       }
-      
+
       // 1
       let managedContext =
         appDelegate.persistentContainer.viewContext
-      
+
       // 2
       let entity =
         NSEntityDescription.entity(forEntityName: "User",
                                    in: managedContext)!
-      
+
       let person = NSManagedObject(entity: entity,
                                    insertInto: managedContext)
-      
+
       // 3
         person.setValue(email, forKeyPath: "email")
         person.setValue(password, forKeyPath: "password")
-      
+
       // 4
       do {
         try managedContext.save()
@@ -98,3 +93,4 @@ class Main_ViewController: UIViewController {
       }
     }
 }
+
