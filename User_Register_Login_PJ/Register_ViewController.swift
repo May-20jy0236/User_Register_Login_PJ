@@ -7,7 +7,7 @@
 
 import UIKit
 import CoreData
-class Main_ViewController: UIViewController {
+class Register_ViewController: UIViewController {
 
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var registerBtn: UIButton!
@@ -51,46 +51,61 @@ class Main_ViewController: UIViewController {
             dialogMessage.addAction(okAction)
             present(dialogMessage, animated: true, completion: nil)
         }else{
-            guard let mail = emailTextField?.text else{ return}
-            data1 = mail
-            guard let pass = emailTextField?.text else{ return}
-            data2 = pass
-            performSegue(withIdentifier: "register", sender: nil)
+            let app = UIApplication.shared.delegate as! AppDelegate
+            let context = app.persistentContainer.viewContext
+            let new_user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context)
+            new_user.setValue(emailTextField.text, forKey: "email")
+            new_user.setValue(passwordTextField.text, forKey: "password")
+            do{
+                try context.save()
+                print("Registered  Sucessfully")
+                
+            }
+            catch{
+                let Fetcherror = error as NSError
+                print("error", Fetcherror.localizedDescription)
+                
+            }
+            
         }
-
-        self.save(email: data1, password: data2)
+        self.performSegue(withIdentifier: "register", sender: nil)
 
     }
-    func save(email: String, password: String) {
 
-      guard let appDelegate =
-        UIApplication.shared.delegate as? AppDelegate else {
-        return
-      }
-
-      // 1
-      let managedContext =
-        appDelegate.persistentContainer.viewContext
-
-      // 2
-      let entity =
-        NSEntityDescription.entity(forEntityName: "User",
-                                   in: managedContext)!
-
-      let person = NSManagedObject(entity: entity,
-                                   insertInto: managedContext)
-
-      // 3
-        person.setValue(email, forKeyPath: "email")
-        person.setValue(password, forKeyPath: "password")
-
-      // 4
-      do {
-        try managedContext.save()
-        customer.append(person)
-      } catch let error as NSError {
-        print("Could not save. \(error), \(error.userInfo)")
-      }
+    
+    @IBAction func backtoLogin_Button(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
+//    func save(email: String, password: String) {
+//
+//      guard let appDelegate =
+//        UIApplication.shared.delegate as? AppDelegate else {
+//        return
+//      }
+//
+//      // 1
+//      let managedContext =
+//        appDelegate.persistentContainer.viewContext
+//
+//      // 2
+//      let entity =
+//        NSEntityDescription.entity(forEntityName: "User",
+//                                   in: managedContext)!
+//
+//      let person = NSManagedObject(entity: entity,
+//                                   insertInto: managedContext)
+//
+//      // 3
+//        person.setValue(email, forKeyPath: "email")
+//        person.setValue(password, forKeyPath: "password")
+//
+//      // 4
+//      do {
+//        try managedContext.save()
+//        customer.append(person)
+//      } catch let error as NSError {
+//        print("Could not save. \(error), \(error.userInfo)")
+//      }
+//    }
 }
 
