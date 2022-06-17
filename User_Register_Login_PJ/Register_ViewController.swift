@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreData
+import PKHUD
+
 class Register_ViewController: UIViewController {
 
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -36,7 +38,6 @@ class Register_ViewController: UIViewController {
     }
     
     @IBAction func registerBtn(_ sender: UIButton) {
-
         if (emailTextField.text == "" || passwordTextField.text == "" || reenterpassTextField.text == ""){
             let dialogMsg = UIAlertController(title: "Error", message: "Please Enter User Name and Password", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "OK",
@@ -51,6 +52,7 @@ class Register_ViewController: UIViewController {
             dialogMessage.addAction(okAction)
             present(dialogMessage, animated: true, completion: nil)
         }else{
+            HUD.show(.progress)
             let app = UIApplication.shared.delegate as! AppDelegate
             let context = app.persistentContainer.viewContext
             let new_user = NSEntityDescription.insertNewObject(forEntityName: "User", into: context)
@@ -59,53 +61,22 @@ class Register_ViewController: UIViewController {
             do{
                 try context.save()
                 print("Registered  Sucessfully")
-                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    HUD.hide{_ in
+                        HUD.flash(.success, onView: self.view)
+                        self.performSegue(withIdentifier: "register", sender: nil)
+                    }
+                }
             }
             catch{
                 let Fetcherror = error as NSError
                 print("error", Fetcherror.localizedDescription)
-                
             }
-            
         }
-        self.performSegue(withIdentifier: "register", sender: nil)
-
     }
-
-    
     @IBAction func backtoLogin_Button(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-//    func save(email: String, password: String) {
-//
-//      guard let appDelegate =
-//        UIApplication.shared.delegate as? AppDelegate else {
-//        return
-//      }
-//
-//      // 1
-//      let managedContext =
-//        appDelegate.persistentContainer.viewContext
-//
-//      // 2
-//      let entity =
-//        NSEntityDescription.entity(forEntityName: "User",
-//                                   in: managedContext)!
-//
-//      let person = NSManagedObject(entity: entity,
-//                                   insertInto: managedContext)
-//
-//      // 3
-//        person.setValue(email, forKeyPath: "email")
-//        person.setValue(password, forKeyPath: "password")
-//
-//      // 4
-//      do {
-//        try managedContext.save()
-//        customer.append(person)
-//      } catch let error as NSError {
-//        print("Could not save. \(error), \(error.userInfo)")
-//      }
-//    }
+
 }
 
